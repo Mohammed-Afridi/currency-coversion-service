@@ -5,3 +5,6 @@ mental model :
 CCS -> CES -> DB
 
 Now we will invoke CES from CCS
+
+Now we will see the use of feign client
+we might have to invoke 1000's of microservices , we can t keep on writing huge no of code, we need to use feign
