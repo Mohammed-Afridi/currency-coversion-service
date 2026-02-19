@@ -8,3 +8,21 @@ Now we will invoke CES from CCS
 
 Now we will see the use of feign client
 we might have to invoke 1000's of microservices , we can t keep on writing huge no of code, we need to use feign
+
+Sofar we have connected CCS with CES
+Now, Lets say URL of the currency exchange microservice changes , May be it runs on port 8300 or 8400
+In this case will have to do code changes in CCS to point to new URL -> not good
+there can be 1000s of Micro services, you dont want to hardcode
+We need to find a solution , the CCS should find automatically the current location of the Microservice
+->      Naming Server ( Service Registry )comes into picture      <-
+So whenevr a micro services comes , it will get registered with Service registry , How much so ever instances can register.
+But, what is the advantage ?
+So when CCS wants to talk to CES , It can talk to any instance of CES thorugh Naming Server Via Load Balancer
+
+                                            CCS
+                                             ||
+                                        Load balancer -> Naming Server
+                                     //      ||      \\
+                                CES - Ins1  CES - 2   CES - 3
+
+Next step is creating a project for Naming Server - Eureka Naming Server
